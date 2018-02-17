@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using ColibriAPI.Models.Entities;
 
 namespace ColibriAPI.Features.CreateUser
 {
@@ -7,7 +6,7 @@ namespace ColibriAPI.Features.CreateUser
     {
         public CreateUserMappingProfile()
         {
-            CreateMap<CreateUserModels.Query, User>();
+            CreateMap<CreateUserModels.Query, Models.Entities.User>();
         }
     }
 }
