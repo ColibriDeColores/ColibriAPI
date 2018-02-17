@@ -9,8 +9,8 @@ namespace ColibriAPI.Entities
         public string UpdatedByUser { get; set; }
         public string DeletedByUser { get; set; }
         public DateTimeOffset DateCreated { get; set; }
-        public DateTimeOffset DateUpdated { get; set; }
-        public DateTimeOffset DateDeleted { get; set; }
+        public DateTimeOffset? DateUpdated { get; set; }
+        public DateTimeOffset? DateDeleted { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

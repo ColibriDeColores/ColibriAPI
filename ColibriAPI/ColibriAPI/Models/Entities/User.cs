@@ -5,7 +5,7 @@ namespace ColibriAPI.Models.Entities
 {
     public class User : Entity
     {
-        public User()
+        protected User()
         {
             //Entity Framework Core Only
         }
