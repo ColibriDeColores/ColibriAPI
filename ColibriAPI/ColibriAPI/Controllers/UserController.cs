@@ -1,5 +1,7 @@
 ﻿using System;
 using ColibriAPI.Features.CreateUser;
+using ColibriAPI.Features.GetUsers;
+using ColibriAPI.Features.GetUsersById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,27 +21,29 @@ namespace ColibriAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(new string[] { "value1", "value2" });
+            var result = _mediatr.Send(new GetUsersModels.Query());
+            return Ok(result);
         }
 
         // GET api/user/cbb0312a-1332-4412-afd3-51be3931f015
         [HttpGet("{id}")]
-        public IActionResult Get([FromQuery] Guid id)
+        public IActionResult Get(Guid id)
         {
-
-            return Ok("value");
+            var result = _mediatr.Send(new GetUsersByIdModels.Query(id));
+            return Ok(result);
         }
 
         // POST api/user
         [HttpPost]
         public IActionResult Post([FromBody] CreateUserModels.Query query)
         {
-            return Ok(_mediatr.Send(query));
+            var result = _mediatr.Send(query);
+            return Ok(result);
         }
 
         // PUT api/user/cbb0312a-1332-4412-afd3-51be3931f015
         [HttpPut("{id}")]
-        public IActionResult Put([FromQuery] Guid id, [FromBody] string value)
+        public IActionResult Put(Guid id, [FromBody] string value)
         {
             return Ok();
         }
