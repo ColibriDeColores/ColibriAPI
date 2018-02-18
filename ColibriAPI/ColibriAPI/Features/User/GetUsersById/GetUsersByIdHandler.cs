@@ -22,7 +22,8 @@ namespace ColibriAPI.Features.User.GetUsersById
             return Task.FromResult(Mapper
                 .Map<GetUsersByIdModels.Result>(
                     _dbContext.Set<Models.Entities.User>()
-                        .Where(x => x.Id == request.Id && !x.IsDeleted)
+                        .Where(x => x.Id.ToString() == request.Id.ToString()
+                            && !x.IsDeleted)
                         .Single()
                     )
                 );
