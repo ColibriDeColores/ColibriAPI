@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using System.Collections.Generic;
 
 namespace ColibriAPI.Features.GetUsers
 {
