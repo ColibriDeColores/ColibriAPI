@@ -12,9 +12,10 @@ using System;
 namespace ColibriAPI.Migrations
 {
     [DbContext(typeof(ColibriApiContext))]
-    partial class ColibriApiContextModelSnapshot : ModelSnapshot
+    [Migration("20180813224023_InitialSchema")]
+    partial class InitialSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
