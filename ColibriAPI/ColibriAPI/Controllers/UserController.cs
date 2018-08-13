@@ -2,6 +2,7 @@
 using ColibriAPI.Features.User.CreateUser;
 using ColibriAPI.Features.User.GetUsers;
 using ColibriAPI.Features.User.GetUsersById;
+using ColibriAPI.Features.User.UpdateUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -43,14 +44,14 @@ namespace ColibriAPI.Controllers
 
         // PUT api/user/cbb0312a-1332-4412-afd3-51be3931f015
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, [FromBody] string value)
+        public IActionResult Put(Guid id, [FromBody] UpdateUserModels.Query value)
         {
             return Ok();
         }
 
         // DELETE api/user/cbb0312a-1332-4412-afd3-51be3931f015
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid id)
         {
             return Ok();
         }
