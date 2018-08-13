@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using MediatR;
 using System;
 using System.Threading;
@@ -16,7 +17,6 @@ namespace ColibriAPI.Features.User.UpdateUser
             public string LastName { get; set; }
             public string Email { get; set; }
             public string Password { get; set; }
-            public Guid PasswordSalt { get; set; }
             public DateTime Birthday { get; set; }
             public bool IsAdmin { get; set; }
             public bool IsOrganizer { get; set; }
@@ -29,11 +29,24 @@ namespace ColibriAPI.Features.User.UpdateUser
         }
     }
 
+    public class UpdateUserValidator : AbstractValidator<UpdateUserModels.Query>
+    {
+        public UpdateUserValidator()
+        {
+            RuleFor(user => user.Id).NotNull();
+            RuleFor(user => user.FirstName).NotNull();
+            RuleFor(user => user.LastName).NotNull();
+            RuleFor(user => user.Email).NotNull().EmailAddress();
+            RuleFor(user => user.Password).NotNull();
+            RuleFor(user => user.Birthday).NotNull();
+        }
+    }
+
     public class UpdateUserMappingProfile : Profile
     {
         public UpdateUserMappingProfile()
         {
-            CreateMap<CreateUserModels.Query, Models.Entities.User>();
+            CreateMap<UpdateUserModels.Query, Models.Entities.User>();
         }
     }
 

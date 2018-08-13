@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using MediatR;
 using System;
 using System.Threading;
@@ -15,7 +16,6 @@ namespace ColibriAPI.Features.User.CreateUser
             public string LastName { get; set; }
             public string Email { get; set; }
             public string Password { get; set; }
-            public Guid PasswordSalt { get; set; }
             public DateTime Birthday { get; set; }
             public bool IsAdmin { get; set; }
             public bool IsOrganizer { get; set; }
@@ -25,6 +25,18 @@ namespace ColibriAPI.Features.User.CreateUser
         public class Result
         {
             public bool Success { get; set; }
+        }
+    }
+
+    public class CreateUserValidator : AbstractValidator<CreateUserModels.Query>
+    {
+        public CreateUserValidator()
+        {
+            RuleFor(user => user.FirstName).NotNull();
+            RuleFor(user => user.LastName).NotNull();
+            RuleFor(user => user.Email).NotNull().EmailAddress();
+            RuleFor(user => user.Password).NotNull();
+            RuleFor(user => user.Birthday).NotNull();
         }
     }
 
