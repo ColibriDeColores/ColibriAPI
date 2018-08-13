@@ -1,7 +1,7 @@
 ﻿using System;
-using ColibriAPI.Features.CreateUser;
-using ColibriAPI.Features.GetUsers;
-using ColibriAPI.Features.GetUsersById;
+using ColibriAPI.Features.User.CreateUser;
+using ColibriAPI.Features.User.GetUsers;
+using ColibriAPI.Features.User.GetUsersById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
