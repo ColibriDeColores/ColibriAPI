@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using ColibriAPI.Features.CreateUser;
-using ColibriAPI.Models.Entities;
+﻿using ColibriAPI.Features.CreateUser;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
