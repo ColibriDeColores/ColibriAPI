@@ -10,14 +10,21 @@ namespace ColibriAPI.Features.User.CreateUser
     {
         public class Query : IRequest<Result>
         {
-            public string Name { get; set; }
+            public string FirstName { get; set; }
+            public string MiddleName { get; set; }
+            public string LastName { get; set; }
             public string Email { get; set; }
+            public string Password { get; set; }
+            public Guid PasswordSalt { get; set; }
             public DateTime Birthday { get; set; }
+            public bool IsAdmin { get; set; }
+            public bool IsOrganizer { get; set; }
+            public bool IsPlayer { get; set; }
         }
 
         public class Result
         {
-
+            public bool Success { get; set; }
         }
     }
 
@@ -33,7 +40,7 @@ namespace ColibriAPI.Features.User.CreateUser
     {
         public Task<CreateUserModels.Result> Handle(CreateUserModels.Query request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(new CreateUserModels.Result());
+            return Task.FromResult(new CreateUserModels.Result() { Success = true });
         }
     }
 }
