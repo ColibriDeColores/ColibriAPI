@@ -9,7 +9,7 @@ namespace ColibriAPI.Features.User.CreateUser
 {
     public class CreateUserModels
     {
-        public class Query : IRequest<Result>
+        public class Command : IRequest<Result>
         {
             public string FirstName { get; set; }
             public string MiddleName { get; set; }
@@ -28,7 +28,7 @@ namespace ColibriAPI.Features.User.CreateUser
         }
     }
 
-    public class CreateUserValidator : AbstractValidator<CreateUserModels.Query>
+    public class CreateUserValidator : AbstractValidator<CreateUserModels.Command>
     {
         public CreateUserValidator()
         {
@@ -44,13 +44,13 @@ namespace ColibriAPI.Features.User.CreateUser
     {
         public CreateUserMappingProfile()
         {
-            CreateMap<CreateUserModels.Query, Models.Entities.User>();
+            CreateMap<CreateUserModels.Command, Models.Entities.User>();
         }
     }
 
-    public class CreateUserHandler : IRequestHandler<CreateUserModels.Query, CreateUserModels.Result>
+    public class CreateUserHandler : IRequestHandler<CreateUserModels.Command, CreateUserModels.Result>
     {
-        public Task<CreateUserModels.Result> Handle(CreateUserModels.Query request, CancellationToken cancellationToken)
+        public Task<CreateUserModels.Result> Handle(CreateUserModels.Command request, CancellationToken cancellationToken)
         {
             return Task.FromResult(new CreateUserModels.Result() { Success = true });
         }

@@ -9,7 +9,7 @@ namespace ColibriAPI.Features.User.UpdateUser
 {
     public class UpdateUserModels
     {
-        public class Query : IRequest<Result>
+        public class Command : IRequest<Result>
         {
             public Guid Id { get; set; }
             public string FirstName { get; set; }
@@ -29,7 +29,7 @@ namespace ColibriAPI.Features.User.UpdateUser
         }
     }
 
-    public class UpdateUserValidator : AbstractValidator<UpdateUserModels.Query>
+    public class UpdateUserValidator : AbstractValidator<UpdateUserModels.Command>
     {
         public UpdateUserValidator()
         {
@@ -46,13 +46,13 @@ namespace ColibriAPI.Features.User.UpdateUser
     {
         public UpdateUserMappingProfile()
         {
-            CreateMap<UpdateUserModels.Query, Models.Entities.User>();
+            CreateMap<UpdateUserModels.Command, Models.Entities.User>();
         }
     }
 
-    public class UpdateUserHandler : IRequestHandler<UpdateUserModels.Query, UpdateUserModels.Result>
+    public class UpdateUserHandler : IRequestHandler<UpdateUserModels.Command, UpdateUserModels.Result>
     {
-        public Task<UpdateUserModels.Result> Handle(UpdateUserModels.Query request, CancellationToken cancellationToken)
+        public Task<UpdateUserModels.Result> Handle(UpdateUserModels.Command request, CancellationToken cancellationToken)
         {
             return Task.FromResult(new UpdateUserModels.Result() { Success = true });
         }

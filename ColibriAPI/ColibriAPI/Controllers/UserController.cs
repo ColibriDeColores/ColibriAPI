@@ -36,7 +36,7 @@ namespace ColibriAPI.Controllers
 
         // POST api/user
         [HttpPost]
-        public IActionResult Post([FromBody] CreateUserModels.Query query)
+        public IActionResult Post([FromBody] CreateUserModels.Command query)
         {
             var result = _mediatr.Send(query);
             return Ok(result);
@@ -44,7 +44,7 @@ namespace ColibriAPI.Controllers
 
         // PUT api/user/cbb0312a-1332-4412-afd3-51be3931f015
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, [FromBody] UpdateUserModels.Query value)
+        public IActionResult Put(Guid id, [FromBody] UpdateUserModels.Command value)
         {
             return Ok();
         }
